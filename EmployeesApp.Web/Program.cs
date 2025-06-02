@@ -13,8 +13,8 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddControllersWithViews();
-        builder.Services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
-        builder.Services.AddSingleton<IEmployeeService, EmployeeService>();
+        builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
         var connString = builder.Configuration.GetConnectionString("DefaultConnection");
         builder.Services.AddDbContext<ApplicationContext>(o => o.UseSqlServer(connString));
