@@ -17,13 +17,14 @@ public class ApplicationContext(DbContextOptions<ApplicationContext> options) : 
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Employee>().HasData(
-        new Employee { Id = 1, Name = "Ica", Email = "Stockholm@hotmail.com" },
-            new Employee { Id = 22, Name = "Coop", Email = "Stockholm@hotmail.com" },
-            new Employee { Id = 3, Name = "Hemköp", Email = "Göteborg@hotmail.com" }
+          new Employee { Id = 1, Name = "Ica", Email = "Stockholm@hotmail.com", Salary = 35000m },
+          new Employee { Id = 22, Name = "Coop", Email = "Stockholm@hotmail.com", Salary = 32000m },
+          new Employee { Id = 3, Name = "Hemköp", Email = "Göteborg@hotmail.com", Salary = 31000m }
         );
+
         modelBuilder.Entity<Employee>()
-        .Property(e => e.Salary)
-        .HasColumnType("money");
+            .Property(e => e.Salary)
+            .HasColumnType("money");
     }
 
 }
