@@ -5,7 +5,7 @@ using EmployeesApp.Infrastructure.Persistance.Repositories;
 namespace EmployeesApp.Terminal;
 internal class Program
 {
-    static readonly EmployeeService employeeService = new(new EmployeeRepository());
+    static readonly EmployeeService employeeService = new(new EmployeeRepository(null));
 
     static void Main(string[] args)
     {
