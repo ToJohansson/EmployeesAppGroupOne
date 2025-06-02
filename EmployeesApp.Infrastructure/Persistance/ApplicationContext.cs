@@ -22,8 +22,8 @@ public class ApplicationContext(DbContextOptions<ApplicationContext> options) : 
             new Employee { Id = 3, Name = "Hemköp", Email = "Göteborg@hotmail.com" }
         );
         modelBuilder.Entity<Employee>()
-        .Property(e => e.Salary)
-        .HasColumnType("money");
+            .Property(o => o.Salary)
+            .HasColumnType("money");
     }
 
 }
