@@ -3,9 +3,9 @@ using EmployeesApp.Domain.Entities;
 
 namespace EmployeesApp.Infrastructure.Persistance.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository(ApplicationContext context) : IEmployeeRepository
     {
-        readonly List<Employee> employees =
+        /*readonly List<Employee> employees =
         [
             new Employee()
         {
@@ -37,21 +37,22 @@ namespace EmployeesApp.Infrastructure.Persistance.Repositories
             Name = "Jon Skeet",
             Email = "j.s@outlook.com",
         },
-        ];
+        ];*/
 
         public void Add(Employee employee)
         {
-            employee.Id = employees.Count < 0 ? 1 : employees.Max(e => e.Id) + 1;
-            employees.Add(employee);
+            
+            context.Employees.Add(employee);
+            context.SaveChanges();
         }
 
         //Classic C# syntax for GetAll()
         public Employee[] GetAll()
         {
-            return [.. employees];
+            return [.. context.Employees];
         }
 
-        public Employee? GetById(int id) => employees
-            .SingleOrDefault(e => e.Id == id);
+        public Employee? GetById(int id) => context.Employees
+            .Find(id);
     }
 }
