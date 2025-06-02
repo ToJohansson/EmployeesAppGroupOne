@@ -23,7 +23,7 @@ public class ApplicationContext(DbContextOptions<ApplicationContext> options) : 
         );
 
         modelBuilder.Entity<Employee>()
-            .Property(e => e.Salary)
+            .Property(o => o.Salary)
             .HasColumnType("money");
     }
 
